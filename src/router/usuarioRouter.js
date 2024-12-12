@@ -1,5 +1,5 @@
 const router= require("express").Router()
-const usuarioController= require("../controller/usuario.controller")
+const usuarioController= require("../controller/usuarioController")
 const authMiddleware= require("../middleware/usuario.middleware")
 const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,validaLogin}= require("../middleware/validacao.middleware")
 const paginacao= require("../middleware/paginacao.middleware")

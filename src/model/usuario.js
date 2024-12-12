@@ -16,9 +16,9 @@ const usuarioSchema=new mongoose.Schema({
         }
     ],
     createdAt:{type:Date,require:true,default:Date.now()},
-    produtos_fav:[
+    pizzas_fav:[
         {
-            _id:{type:mongoose.Schema.Types.ObjectId,unique:true,ref:"produtos"},
+            _id:{type:mongoose.Schema.Types.ObjectId,unique:true,ref:"pizzas"},
             createdAt:{type:Date,default:Date.now()}
         }
     ],
