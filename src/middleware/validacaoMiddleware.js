@@ -1,35 +1,41 @@
 const object= require("mongoose").Types.ObjectId
 
 const validaUsuario= (req,res,next)=>{
-    
+    let erros=[]
+
     if(!req.body.nome){
-        return res.status(400).send({message:"o campo 'nome' não foi preenchido."})
+        erros.push("nome")
     }else if(typeof(req.body.nome)!="string"){
         return res.status(400).send({message:"o campo 'nome' tem que se String."})
     }
 
     if(!req.body.email){
-        return res.status(400).send({message:"o campo 'email' não foi preenchido."})
-
+        erros.push("email")
     }else if(typeof(req.body.email)!="string"){
         return res.status(400).send({message:"o campo 'email' tem que se String."})
     }
 
     if(!req.body.senha){
-        return res.status(400).send({message:"o campo 'senha' não foi preenchido."})
-
+        erros.push("senha")
     }else if(typeof(req.body.senha)!="string"){
         return res.status(400).send({message:"o campo 'senha' tem que se String."})
     }
 
     if(!req.body.imagem){
-        return res.status(400).send({message:"o campo 'imagem' não foi preenchido."})
-
+        erros.push("imagem")
     }else if(typeof(req.body.imagem)!="string"){
         return res.status(400).send({message:"o campo 'imagem' tem que se String."})
     }
 
-    return next()
+    if(erros.length == 0){
+        return next()
+    }else{
+        if(erros.length>1){
+            return res.status(400).send({message:`os campos ${erros} não foram preenchidos.`})
+        }else{
+            return res.status(400).send({message:`o campo ${erros} não foi preenchido.`})
+        }
+    }
 }
 
 const validaEndereco= (req,res,next)=>{
