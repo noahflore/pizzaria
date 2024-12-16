@@ -9,7 +9,7 @@ const pizza = require("./src/router/pizzaRouter")
 const categoria = require("./src/router/categoriaRouter")
 const carrinho = require("./src/router/carrinhoRouter")
 const pedido = require("./src/router/pedidoRouter")
-const docs = require("./src/router/docs.router")
+const docs = require("./src/router/docsRouter")
 
 connectToDataBase()
 
