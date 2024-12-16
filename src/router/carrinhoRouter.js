@@ -1,13 +1,13 @@
 const router= require("express").Router()
-const authmiddleware= require("../middleware/usuario.middleware")
+const authmiddleware= require("../middleware/usuarioMiddleware")
 const carrinhoController= require("../controller/carrinhoController")
-const {validaCarrinho,validaIdParams,validaProdutoCarrinhoPedido}= require("../middleware/validacao.middleware")
-const paginacao= require("../middleware/paginacao.middleware")
+const {validaCarrinho,validaIdParams,validaPizzaCarrinhoPedido}= require("../middleware/validacaoMiddleware")
+const paginacao= require("../middleware/paginacaoMiddleware")
 
 router.get("/findById/:id",validaIdParams,authmiddleware,carrinhoController.findCarrinhoByIdController)
 router.get("/findAll",paginacao,authmiddleware,carrinhoController.findAllCarrinhoController)
 
-router.post("/create",authmiddleware,validaProdutoCarrinhoPedido,validaCarrinho,carrinhoController.createCarrinhoController)
+router.post("/create",authmiddleware,validaPizzaCarrinhoPedido,validaCarrinho,carrinhoController.createCarrinhoController)
 
 router.put("/update/:id",validaIdParams,authmiddleware,validaCarrinho,carrinhoController.updateCarrinhoController)
 

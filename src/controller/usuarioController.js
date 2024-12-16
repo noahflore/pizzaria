@@ -1,5 +1,5 @@
 const userService= require("../service/usuarioService")
-const authService= require("../service/auth.service")
+const authService= require("../service/authService")
 const bcrypt=require("bcrypt")
 
 const findByIdUserController= async (req,res)=>{

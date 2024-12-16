@@ -1,8 +1,8 @@
 const router= require("express").Router()
 const usuarioController= require("../controller/usuarioController")
-const authMiddleware= require("../middleware/usuario.middleware")
-const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,validaLogin}= require("../middleware/validacao.middleware")
-const paginacao= require("../middleware/paginacao.middleware")
+const authMiddleware= require("../middleware/usuarioMiddleware")
+const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,validaLogin}= require("../middleware/validacaoMiddleware")
+const paginacao= require("../middleware/paginacaoMiddleware")
 
 router.get('/findById/:id',validaIdParams,authMiddleware,usuarioController.findByIdUserController)
 router.get('/findAll',paginacao,usuarioController.findAllUsersController)

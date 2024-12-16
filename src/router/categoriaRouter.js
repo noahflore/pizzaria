@@ -1,8 +1,8 @@
 const router= require("express").Router()
-const authmiddleware= require("../middleware/usuario.middleware")
+const authmiddleware= require("../middleware/usuarioMiddleware")
 const categoriaController= require("../controller/categoriaController")
-const {validaCategoria,validaIdParams}= require("../middleware/validacao.middleware")
-const paginacao= require("../middleware/paginacao.middleware")
+const {validaCategoria,validaIdParams}= require("../middleware/validacaoMiddleware")
+const paginacao= require("../middleware/paginacaoMiddleware")
 
 router.get("/findById/:id",validaIdParams,authmiddleware,categoriaController.findCategoriaByIdController)
 router.get("/findAll",paginacao,authmiddleware,categoriaController.findAllCategoriaController)
