@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-const {findByIdService}= require("../service/usuarioService")
+const {findByIdServiceUsuario}= require("../service/usuarioService")
 
 module.exports= async (req,res,next)=>{
    const authHeaders= req.headers.authorization
@@ -27,7 +27,7 @@ module.exports= async (req,res,next)=>{
             return res.status(500).send({message:"o token invalido."})
         }
         //se de erro aqui verifica se o id foi pego do req ou decoded
-        const user= await findByIdService(decoded.user._id)
+        const user= await findByIdServiceUsuario(decoded.user._id)
 
         if(!user || !user.id){
             console.log(`erro user: ${user}`)
