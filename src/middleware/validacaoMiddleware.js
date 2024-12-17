@@ -41,6 +41,9 @@ const validaUsuario= (req,res,next)=>{
 const validaEndereco= (req,res,next)=>{
     let erros=[]
 
+    if(!Array.isArray(req.body)){
+        return res.status(400).send({message:"isso não é um array/vetor ."})
+    }
     req.body.map((value,key)=>{
         if(!value.rua){
             erros.push(`'${key+1} - rua'`)
