@@ -54,7 +54,7 @@ const removeAddressService= (id,addressId)=>{
     )
 }
 
-const addFavProductService= (id,produto)=>{
+const addFavPizzaService= (id,pizza)=>{
     return usuario.findOneAndUpdate(
         {
         
@@ -62,8 +62,8 @@ const addFavProductService= (id,produto)=>{
         },
         {
             $push:{
-                produtos_fav:{
-                    _id: produto._id
+                pizzas_fav:{
+                    _id: pizza._id
                 }
             }
         },
@@ -73,7 +73,7 @@ const addFavProductService= (id,produto)=>{
     )
 }
 
-const removeFavProductService= (id,produto)=>{
+const removeFavPizzaService= (id,produto)=>{
     return usuario.findOneAndUpdate(
         {
         
@@ -82,7 +82,7 @@ const removeFavProductService= (id,produto)=>{
         {
             $pull:{
                 produtos_fav:{
-                    _id: produto._id
+                    _id: pizza._id
                 }
             }
         },
@@ -100,6 +100,6 @@ module.exports={
     deleteServiceUsuario,
     addAddressService,
     removeAddressService,
-    addFavProductService,
-    removeFavProductService
+    addFavPizzaService,
+    removeFavPizzaService
 }

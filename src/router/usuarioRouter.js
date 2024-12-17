@@ -5,7 +5,7 @@ const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,validaLogin}= r
 const paginacao= require("../middleware/paginacaoMiddleware")
 
 router.get('/findById/:id',validaIdParams,authMiddleware,usuarioController.findByIdUserController)
-router.get('/findAll',paginacao,usuarioController.findAllUsersController)
+router.get('/findAll',authMiddleware,paginacao,usuarioController.findAllUsersController)
 
 router.post('/login',validaLogin,usuarioController.usuarioLogin)
 router.post('/create',validaUsuario,usuarioController.createUserController)
