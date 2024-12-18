@@ -77,7 +77,10 @@ const deleteUserController= async (req,res)=>{
 
 const addAddressController= async (req,res)=>{
     try{
-        const endereco = await userService.addAddressService(req.params.id,req.body)
+        var endereco
+        req.body.map(async (value,key)=>{
+            endereco = await userService.addAddressService(req.params.id,value)
+        })
         
         if(endereco !=null && endereco.value == null){
             return res.status(201).send({message:"endereço criado com sucesso."})

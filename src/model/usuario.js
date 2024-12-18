@@ -10,8 +10,9 @@ const usuarioSchema=new mongoose.Schema({
         {
             rua:{type:String,require:true},
             numero:{type:Number,require:true},
+            bairro:{type:String,required:true},
             complemento:{type:String},
-            cep:{type:String,require:true},
+            cep:{type:String,require:true,unique:true},
             createdAt:{type:Date,require:true,default:Date.now()},
         }
     ],
