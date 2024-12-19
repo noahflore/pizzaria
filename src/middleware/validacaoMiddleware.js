@@ -193,6 +193,14 @@ const valida_IdBody= (req,res,next)=>{
     }
 }
 
+const valida_IdAddress= (req,res,next)=>{
+    if(object.isValid(req.body.addressId)){
+        return next()
+    }else{
+        return res.status(400).send({message:`o ID do address é invalido.`})
+    }
+}
+
 const validaLogin= (req,res,next)=>{
     let erros=[]
 
@@ -258,6 +266,7 @@ module.exports= {
     validaCarrinho,
     validaIdParams,
     valida_IdBody,
+    valida_IdAddress,
     validaLogin,
     validaPizzaCarrinhoPedido
 }

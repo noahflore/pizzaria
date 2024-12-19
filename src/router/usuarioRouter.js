@@ -1,7 +1,7 @@
 const router= require("express").Router()
 const usuarioController= require("../controller/usuarioController")
 const authMiddleware= require("../middleware/usuarioMiddleware")
-const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,validaLogin}= require("../middleware/validacaoMiddleware")
+const {validaUsuario,validaEndereco,validaIdParams,valida_IdBody,valida_IdAddress,validaLogin}= require("../middleware/validacaoMiddleware")
 const paginacao= require("../middleware/paginacaoMiddleware")
 
 router.get('/findById/:id',validaIdParams,authMiddleware,usuarioController.findByIdUserController)
@@ -16,6 +16,6 @@ router.put('/update/:id',validaIdParams,authMiddleware,validaUsuario,usuarioCont
 
 router.delete('/removeUser/:id',validaIdParams,authMiddleware,usuarioController.deleteUserController)
 router.delete('/removeFavProduct/:id',validaIdParams,authMiddleware,usuarioController.removeFavProductController)
-router.delete('/removeAddress',authMiddleware,usuarioController.removeAddressController)
+router.delete('/removeAddress',authMiddleware,valida_IdBody,valida_IdAddress,usuarioController.removeAddressController)
 
 module.exports= router
