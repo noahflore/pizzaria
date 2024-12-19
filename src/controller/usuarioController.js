@@ -107,7 +107,7 @@ const addFavProductController= async (req,res)=>{
 const removeAddressController= async (req,res)=>{
     try{
         
-        const endereco = await userService.removeAddressService(req.body.id,req.body.addressId)
+        const endereco = await userService.removeAddressService(req.body._id,req.body.addressId)
         let found=false
         
         endereco.enderecos.map((valor,chave)=>{

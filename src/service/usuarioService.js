@@ -73,7 +73,7 @@ const addFavPizzaService= (id,pizza)=>{
     )
 }
 
-const removeFavPizzaService= (id,produto)=>{
+const removeFavPizzaService= (id,pizza)=>{
     return usuario.findOneAndUpdate(
         {
         
