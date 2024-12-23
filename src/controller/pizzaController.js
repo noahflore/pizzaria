@@ -51,7 +51,19 @@ const updatePizzaController= async (req,res)=>{
 const deletePizzaController= async (req,res)=>{
 
     try{
-        return res.send(await pizzaService.deletePizzaService(req.params.id))
+        let found= false
+
+        const corpo= await pizzaService.deletePizzaService(req.params.id)
+
+        if(corpo){
+            found= true
+        }
+
+        if(found){
+          return res.status(200).send({message:"deletado com sucesso."})
+        }else{
+            return res.status(400).send({message:"o ID informado não foi encontrado."})
+        }
 
     }catch(err){
         console.log(`erro: ${err}`)

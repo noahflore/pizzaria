@@ -10,12 +10,12 @@ router.get('/findAll',authMiddleware,paginacao,usuarioController.findAllUsersCon
 router.post('/login',validaLogin,usuarioController.usuarioLogin)
 router.post('/create',validaUsuario,usuarioController.createUserController)
 router.post('/addAddress/:id',authMiddleware,validaIdParams,validaEndereco,usuarioController.addAddressController)
-router.post('/addFavProduct/:id',authMiddleware,validaIdParams,valida_IdBody,usuarioController.addFavProductController)
+router.post('/addFavPizza/:id',authMiddleware,validaIdParams,valida_IdBody,usuarioController.addFavProductController)
 
 router.put('/update/:id',validaIdParams,authMiddleware,validaUsuario,usuarioController.updateUserController)
 
 router.delete('/removeUser/:id',validaIdParams,authMiddleware,usuarioController.deleteUserController)
-router.delete('/removeFavProduct/:id',validaIdParams,authMiddleware,usuarioController.removeFavProductController)
+router.delete('/removeFavPizza/:id',validaIdParams,authMiddleware,usuarioController.removeFavProductController)
 router.delete('/removeAddress',authMiddleware,valida_IdBody,valida_IdAddress,usuarioController.removeAddressController)
 
 module.exports= router
