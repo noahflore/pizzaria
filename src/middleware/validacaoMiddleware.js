@@ -113,7 +113,7 @@ const validaPizza= (req,res,next)=>{
 
 const validaCategoria=(req,res,next)=>{
     if(!req.body.nome){
-        return res.status(400).send({message:"o campo 'imagem' não foi preenchido."})
+        return res.status(400).send({message:"o campo 'nome' não foi preenchido."})
     }
 
     return next()
