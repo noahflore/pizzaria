@@ -51,20 +51,13 @@ const updatePizzaController= async (req,res)=>{
 const deletePizzaController= async (req,res)=>{
 
     try{
-        let found= false
-
-        const corpo= await pizzaService.deletePizzaService(req.params.id)
-
-        if(corpo){
-            found= true
-        }
-
-        if(found){
-          return res.status(200).send({message:"deletado com sucesso."})
+       const corpo= await categoriaService.deleteCategoriaService(req.params.id)
+      
+       if(corpo){
+            return res.status(200).send({message:"deletado com sucesso."})
         }else{
-            return res.status(400).send({message:"o ID informado não foi encontrado."})
+            return res.status(200).send({message:"objeto não foi encontrado pelo ID."})
         }
-
     }catch(err){
         console.log(`erro: ${err}`)
         return res.status(500).send({message:"erro no servidor tenta novamente mais tarde."})
@@ -74,7 +67,11 @@ const deletePizzaController= async (req,res)=>{
 const addCategoriaPizzaController= async (req,res)=>{
 
     try{
-        return res.send(await pizzaService.addCategoriaPizzaService(req.params.id,req.body))
+        const corpo={
+            ...req.body,
+            createdAt: Date.now()
+        }
+        return res.send(await pizzaService.addCategoriaPizzaService(req.params.id,corpo))
 
     }catch(err){
         console.log(`erro: ${err}`)

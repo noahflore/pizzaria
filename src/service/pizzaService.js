@@ -27,9 +27,9 @@ const addCategoriaPizzaService= (id,categoria)=>{
         },
         {
             $push:{
-                categorias:{
-                    _id:categoria._id,
-                    createdAt:categoria.createdAt
+                categoria:{
+                    _id: categoria._id,
+                    createdAt: categoria.createdAt
                 }
             }
         },
@@ -47,7 +47,7 @@ const removeCategoriaPizzaService= (id,categoria)=>{
         {
             $pull:{
                 categorias:{
-                    _id:categoria._id
+                    _id: categoria._id
                 }
             }
         },

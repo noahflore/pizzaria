@@ -44,8 +44,13 @@ const updateCategoriaController= async (req,res)=>{
 
 const deleteCategoriaController= async (req,res)=>{
     try{
-        return res.send(await categoriaService.deleteCategoriaService(req.params.id))
+        const corpo= await categoriaService.deleteCategoriaService(req.params.id)
 
+        if(corpo){
+            return res.status(200).send({message:"deletado com sucesso."})
+        }else{
+            return res.status(400).send({message:"objeto não foi encontrado pelo ID."})
+        }
     }catch(err){
         console.log(`erro: ${err}`)
         return res.status(500).send({message:"erro no servidor tente novamente mais tarde."})
