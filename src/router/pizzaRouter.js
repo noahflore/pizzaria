@@ -8,7 +8,7 @@ router.get("/findById/:id",validaIdParams,authMiddleware,pizzaController.findByI
 router.get("/findAll",paginacao,authMiddleware,pizzaController.findAllPizzasController)
 
 router.post("/create",authMiddleware,validaPizza,pizzaController.createPizzaController)
-router.post("/addCategoria/:id",authMiddleware,validaIdParams,valida_IdBody,pizzaController.addCategoriaPizzaController)
+router.post("/addCategory/:id",authMiddleware,validaIdParams,valida_IdBody,pizzaController.addCategoriaPizzaController)
 
 router.put("/update/:id",authMiddleware,validaIdParams,validaPizza,pizzaController.updatePizzaController)
 
