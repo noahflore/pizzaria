@@ -1,4 +1,5 @@
 const pizzaService= require("../service/pizzaService")
+const {findCategoriaByIdService}= require("../service/categoriaService")
 
 const findByIdPizzaController= async (req,res)=>{
 
@@ -82,6 +83,16 @@ const addCategoriaPizzaController= async (req,res)=>{
 const removeCategoriaPizzaController= async (req,res)=>{
 
     try{
+        const categoria= await findCategoriaByIdService(req.body)
+        const corpo= await pizzaService.findPizzaByIdService(req.params.id)
+
+        if(!categoria){
+            return res.status(400).send({message:"categoria não foi encontrado pelo ID."})
+        }
+
+        if(!corpo){
+            return res.status(400).send({message:"pizza não foi encontrado pelo ID."})
+        }
         return res.send(await pizzaService.removeCategoriaPizzaService(req.params.id,req.body))
 
     }catch(err){
