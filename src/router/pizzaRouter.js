@@ -13,6 +13,6 @@ router.post("/addCategory/:id",authMiddleware,validaIdParams,valida_IdBody,pizza
 router.put("/update/:id",authMiddleware,validaIdParams,validaPizza,pizzaController.updatePizzaController)
 
 router.delete("/delete/:id",authMiddleware,validaIdParams,pizzaController.deletePizzaController)
-router.delete("/removeCategoria/:id",authMiddleware,validaIdParams,pizzaController.removeCategoriaPizzaController)
+router.delete("/removeCategory/:id",authMiddleware,validaIdParams,pizzaController.removeCategoriaPizzaController)
 
 module.exports= router
