@@ -42,11 +42,11 @@ const addCategoriaPizzaService= (id,categoria)=>{
 const removeCategoriaPizzaService= (id,categoria)=>{
     return pizza.findOneAndUpdate(
         {
-            _id:id
+            _id: id
         },
         {
             $pull:{
-                categorias:{
+                categoria:{
                     _id: categoria._id
                 }
             }
