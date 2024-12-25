@@ -81,7 +81,7 @@ const removeFavPizzaService= (id,pizza)=>{
         },
         {
             $pull:{
-                produtos_fav:{
+                pizzas_fav:{
                     _id: pizza._id
                 }
             }
