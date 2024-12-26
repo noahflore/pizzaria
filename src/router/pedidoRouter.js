@@ -4,13 +4,13 @@ const pedidoController= require("../controller/pedidoController")
 const {validaPedido,validaIdParams,validaPizzaCarrinhoPedido}= require("../middleware/validacaoMiddleware")
 const paginacao= require("../middleware/paginacaoMiddleware")
 
-router.get("/findById/:id",validaIdParams,authmiddleware,pedidoController.findPedidoByIdController)
+router.get("/findById/:id",authmiddleware,validaIdParams,pedidoController.findPedidoByIdController)
 router.get("/findAll",paginacao,authmiddleware,pedidoController.findAllPedidoController)
 
 router.post("/create",authmiddleware,validaPizzaCarrinhoPedido,validaPedido,pedidoController.createPedidoController)
 
-router.delete("/delete/:id",validaIdParams,authmiddleware,pedidoController.deletePedidoController)
+router.delete("/delete/:id",authmiddleware,validaIdParams,pedidoController.deletePedidoController)
 
-router.patch("/updateStatus/:id",validaIdParams,authmiddleware,pedidoController.updateStatusPedidoController)
+router.patch("/updateStatus/:id",authmiddleware,validaIdParams,pedidoController.updateStatusPedidoController)
 
 module.exports= router
