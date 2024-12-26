@@ -1,7 +1,7 @@
 const mongoose= require("mongoose")
 
 const pedidoSchema= new mongoose.Schema({
-    produtos:[
+    pizzas:[
         {
             _id:{type:mongoose.Schema.Types.ObjectId,required:true,unique:true,ref:"pizzas"},
             quantidade:{type:Number,required:true,default:1}

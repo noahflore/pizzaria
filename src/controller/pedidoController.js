@@ -25,7 +25,7 @@ const findAllPedidoController=async (req,res)=>{
 
 const createPedidoController=async (req,res)=>{
 
-    try{
+    try{//criar um array aqui
         const corpo={
             ...req.body,
             userId: req.userId
