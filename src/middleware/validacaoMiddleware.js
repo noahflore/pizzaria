@@ -122,22 +122,16 @@ const validaCategoria=(req,res,next)=>{
 const validaPedido= (req,res,next)=>{
     let erros=[]
     
-    req.body.map((value,key)=>{
-        if(!value.precoTotal){
-            erros.push(`precoTotal + ${key+1}`)
-
-        }else if(typeof(value.precoTotal)!="number"){
-            return res.status(400).send({message:"o campo 'precoTotal' tem que se Number."})
-        }
-
-        if(!value.frete){
-            erros.push(`frete + ${key+1}`)
-
-        }else if(typeof(value.frete)!="number"){
-            return res.status(400).send({message:"o campo 'frete' tem que se Number."})
-        }
-
-    })
+    if(!req.body.precoTotal){
+        erros.push(`precoTotal`)
+    }else if(typeof(req.body.precoTotal)!="number"){
+        return res.status(400).send({message:"o campo 'precoTotal' tem que se Number."})
+    }
+    if(!req.body.frete){
+        erros.push(`frete`)
+    }else if(typeof(req.body.frete)!="number"){
+        return res.status(400).send({message:"o campo 'frete' tem que se Number."})
+    }
 
     if(erros.length == 0){
         return next()
@@ -236,14 +230,10 @@ const validaLogin= (req,res,next)=>{
 const validaPizzaCarrinhoPedido= (req,res,next)=>{
     let erros=[]
 
-    if(!Array.isArray(req.body)){
-        return res.status(400).send({message:"isso não é um array/vetor ."})
-    }
-    req.body.map((value,key)=>{
+    req.body.pizzas.map((value,key)=>{
         if(!value._id){
             erros.push(`'${key+1} - _id'`)
         }
-
         if(!object.isValid(value._id)){
             erros.push(`'${key+1} - _id tipo invalido'`)
         }

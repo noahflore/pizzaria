@@ -25,7 +25,7 @@ const findAllPedidoController=async (req,res)=>{
 
 const createPedidoController=async (req,res)=>{
 
-    try{//criar um array aqui
+    try{
         const corpo={
             ...req.body,
             userId: req.userId
@@ -54,6 +54,11 @@ const updateStatusPedidoController=async (req,res)=>{
 const deletePedidoController=async (req,res)=>{
     
     try{
+        const corpo= await pedidoService.findPedidoByIdService(req.params.id)
+
+        if(!corpo){
+            return res.status(400).send({message:"pedido não foi encontrado pelo ID."})
+        }
         return res.status(200).send(await pedidoService.deletePedidoService(req.params.id))
 
 
