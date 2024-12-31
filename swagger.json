@@ -1,3 +1,1060 @@
 {
-    
+    "openapi":"3.0.0",
+    "info":{
+        "title":"api de uma pizzaria",
+        "description":"pizzaria com CRUD completo e seus endpoints.",
+        "contact":{
+            "name":"giovanne",
+            "email":"apenasteste@email.com"
+        },
+      "version":"1.0.0"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:3000/",
+            "description":"api para testa endpoints"
+        }
+    ],
+    "paths":{
+        "/usuario/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"lista todos os usuarios da api",
+                "description":"lista usuarios dentro de um banco de dados. ",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"mostra uma lista de usuários de acordo com limit.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/findById/{id}":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"lista por ID os usuarios da api",
+                "description":"mostra um usuario usando o ID dentro de um banco de dados. ",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"retorna um único usuário por ID",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/create":{
+            "post":{
+                "summary":"criar um novo usuário",
+                "description":"criar um novo usuário no banco de dados. ",
+                "tags":["usuario"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/usuario"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                
+                "responses":{
+                    "201":{
+                        "description":"usuário criado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                      "type":"object",
+                                      "$ref":"#/components/schemas/usuario"
+                                    }
+                                  }
+                           }
+                    },
+                    "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/update/{id}":{
+            "put":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"atualiza um usuário válido.",
+                "description":"atualiza um usuário válido no banco de dados e retorna o estado atual.",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/usuario"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                   "201":{
+                        "description":"atualizado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                      "type":"object",
+                                      "$ref":"#/components/schemas/usuario"
+                                    }
+                                  }
+                           }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/removeUser/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"remove um usuário válido pelo ID.",
+                "description":"remove um usuário válido pelo ID dentro no banco de dados e retorna.",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"removido com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/addAdress/{id}":{
+            "post":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"adiciona um ou mais endereços.",
+                "description":"adiciona um ou mais endereços no usuário válido dentro no banco de dados e retorna.",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/useraddres"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"endereço(s) adicionado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/removeAdress/":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"remove um endereço.",
+                "description":"remove um endereço de um usuário válido dentro do banco de dados e retorna.",
+                "tags":["usuario"],
+                 "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "id":{
+                                        "type":"string"
+                                    },
+                                    "addressId":{
+                                        "type":"string"
+                                    }
+                                }
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "200":{
+                        "description":"endereço removido com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/useraddres"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/addFavPizza/{id}":{
+            "post":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"adiciona uma pizza favorita.",
+                "description":"adiciona uma pizza favorita no usuário válido dentro do banco de dados e retorna.",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/userpizzas_fav"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"pizza favorita adicionado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/usuario/removeFavPizza/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"remove pizza favorita.",
+                "description":"remove pizza favorita de um usuário válido dentro de um banco de dados e retorna.",
+                "tags":["usuario"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "_id":{
+                                        "type":"string"
+                                    }
+                                }
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "200":{
+                        "description":"pizza favorita removida com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/userpizzas_fav"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"lista todos os usuarios da api",
+                "description":"lista usuarios dentro de um banco de dados. ",
+                "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"mostra uma lista de usuários de acordo com limit.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/usuario"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "securitySchemes":{
+            "bearerAuth":{
+                "type":"http",
+                "scheme":"bearer",
+                "bearerFormat":"jwt"
+            }
+        },
+        "schemas":{
+            "usuario":{
+             "type":"object",
+             "properties":{
+                "nome":{
+                    "type":"string"
+                },
+                "email":{
+                    "type":"string"
+                },
+                "senha":{
+                    "type":"string"
+                },
+                "imagem":{
+                    "type":"string"
+                },
+                "enderecos":{
+                    "type":"array",
+                    "items":{
+                        "properties":{
+                            "rua":{
+                                "type":"string"
+                            },
+                            "numero":{
+                                "type":"integer"
+                            },
+                            "complemento":{
+                                "type":"string"
+                            },
+                            "cep":{
+                                "type":"string"
+                            },
+                            "createdAt":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                },
+                "pizzas_fav":{
+                    "type":"array",
+                    "items":{
+                        "properties":{
+                            "_id":{
+                                "type":"string"
+                            },
+                            "createdAt":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                }
+             }
+
+            },
+            "useraddres":{
+                    "type":"array",
+                    "items":{
+                        "properties":{
+                            "rua":{
+                                "type":"string"
+                            },
+                            "numero":{
+                                "type":"integer"
+                            },
+                            "complemento":{
+                                "type":"string"
+                            },
+                            "cep":{
+                                "type":"string"
+                            },
+                            "createdAt":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                
+            },
+            "userpizzas_fav":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "_id":{
+                            "type":"string"
+                        },
+                        "createdAt":{
+                            "type":"string"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
