@@ -235,7 +235,6 @@
                     },
                     "required":true
                 },
-                
                 "responses":{
                     "201":{
                         "description":"usuário criado com sucesso.",
@@ -867,8 +866,8 @@
                         "bearerAuth":[]
                     }
                 ],
-                "summary":"lista todos os usuarios da api",
-                "description":"lista usuarios dentro de um banco de dados. ",
+                "summary":"lista todas as pizzas da api",
+                "description":"lista pizzas dentro de um banco de dados. ",
                 "tags":["pizza"],
                 "parameters":[
                     {
@@ -888,14 +887,387 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"mostra uma lista de usuários de acordo com limit.",
+                        "description":"mostra uma lista de pizzas de acordo com limit.",
                             "content":{
                                 "application/json":{
                                     "schema":{
                                         "type":"array",
                                           "items":{
                                              "type":"object",
-                                             "$ref":"#/components/schemas/usuario"
+                                             "$ref":"#/components/schemas/pizza"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/findById/{id}":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"mostra uma pizza pelo ID.",
+                "description":"mostra uma pizza válida pelo ID dentro de um banco de dados.",
+                "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"mostra uma pizza de acordo com limit.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/pizza"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/create":{
+            "post":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"criar uma nova pizza.",
+                "description":"criar uma nova pizza e salva no banco de dados.",
+                "tags":["pizza"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/pizza"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"pizza criada com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/pizza"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"lista todas as pizzas da api",
+                "description":"lista pizzas dentro de um banco de dados. ",
+                "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"mostra uma lista de pizzas de acordo com limit.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/pizza"
+                                            }
+                                        
+
+                                    }
+                                  }
+                           }
+                    },"401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"lista todas as pizzas da api",
+                "description":"lista pizzas dentro de um banco de dados. ",
+                "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"mostra uma lista de pizzas de acordo com limit.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"array",
+                                          "items":{
+                                             "type":"object",
+                                             "$ref":"#/components/schemas/pizza"
                                             }
                                         
 
@@ -1048,6 +1420,44 @@
                     "properties":{
                         "_id":{
                             "type":"string"
+                        },
+                        "createdAt":{
+                            "type":"string"
+                        }
+                    }
+                }
+            },
+            "pizza":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "_id":{
+                            "type":"string"
+                        },
+                        "nome":{
+                            "type":"string"
+                        },
+                        "descricao":{
+                            "type":"string"
+                        },
+                        "precoUnitario":{
+                            "type":"string"
+                        },
+                        "imagem":{
+                            "type":"string"
+                        },
+                        "categoria":{
+                            "type":"array",
+                            "items":{
+                                "properties":{
+                                    "_id":{
+                                        "type":"string"
+                                    },
+                                    "createdAt":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
                         },
                         "createdAt":{
                             "type":"string"
