@@ -72,7 +72,7 @@ const addCategoriaPizzaController= async (req,res)=>{
             ...req.body,
             createdAt: Date.now()
         }
-        return res.send(await pizzaService.addCategoriaPizzaService(req.params.id,corpo))
+        return res.status(201).send(await pizzaService.addCategoriaPizzaService(req.params.id,corpo))
 
     }catch(err){
         console.log(`erro: ${err}`)
