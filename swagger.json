@@ -1136,35 +1136,40 @@
                 }
             }
         },
-        "/pizza/findAll":{
-            "get":{
+        "/pizza/update/{id}":{
+            "put":{
                 "security":[
                     {
                         "bearerAuth":[]
                     }
                 ],
-                "summary":"lista todas as pizzas da api",
-                "description":"lista pizzas dentro de um banco de dados. ",
+                "summary":"atualiza uma pizza",
+                "description":"atualiza uma pizza dentro do banco de dados e retorna.",
                 "tags":["pizza"],
                 "parameters":[
                     {
-                        "in":"query",
+                        "in":"path",
                         "schema":{
-                            "type":"integer"
+                            "type":"string"
                         },
-                        "name":"limit"
-                    },
-                    {
-                        "in":"query",
-                        "schema":{
-                            "type":"integer"
-                        },
-                        "name":"offset"
+                        "name":"id",
+                        "required":true
                     }
                 ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/pizza"
+                                }
+                          }
+                    },
+                    "required":true
+                },
                 "responses":{
                     "200":{
-                        "description":"mostra uma lista de pizzas de acordo com limit.",
+                        "description":"atualizado com sucesso.",
                             "content":{
                                 "application/json":{
                                     "schema":{
@@ -1174,6 +1179,105 @@
                                              "$ref":"#/components/schemas/pizza"
                                             }
                                         
+
+                                    }
+                                  }
+                           }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/delete/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"deleta uma pizza.",
+                "description":"deleta uma pizza dentro do banco de dados.",
+                "tags":["pizza"],
+                "responses":{
+                    "200":{
+                        "description":"deletado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "type":"object",
+                                        "properties":{
+                                           "message":{
+                                               "type":"string"
+                                           }
+                                          }
+                                      
 
                                     }
                                   }
@@ -1232,49 +1336,174 @@
                 }
             }
         },
-        "/pizza/findAll":{
-            "get":{
+        "/pizza/addCategory/{id}":{
+            "post":{
                 "security":[
                     {
                         "bearerAuth":[]
                     }
                 ],
-                "summary":"lista todas as pizzas da api",
-                "description":"lista pizzas dentro de um banco de dados. ",
+                "summary":"adiciona uma categoria na pizza.",
+                "description":"adiciona uma categoria válida na pizza e retorna.",
                 "tags":["pizza"],
                 "parameters":[
                     {
-                        "in":"query",
+                        "in":"path",
                         "schema":{
-                            "type":"integer"
+                            "type":"string"
                         },
-                        "name":"limit"
-                    },
-                    {
-                        "in":"query",
-                        "schema":{
-                            "type":"integer"
-                        },
-                        "name":"offset"
+                        "name":"id",
+                        "required":true
                     }
                 ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/categoria"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"categoria adicionado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pizza"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pizza/removeCategory/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"remove categoria dentro da pizza.",
+                "description":"remove uma categoria dentro de uma pizza válida e retorna.",
+                "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/categoria"
+                                }
+                          }
+                    },
+                    "required":true
+                },
                 "responses":{
                     "200":{
-                        "description":"mostra uma lista de pizzas de acordo com limit.",
-                            "content":{
-                                "application/json":{
-                                    "schema":{
-                                        "type":"array",
-                                          "items":{
-                                             "type":"object",
-                                             "$ref":"#/components/schemas/pizza"
-                                            }
-                                        
+                        "description":"categoria removida com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pizza"
+                                        }
+                                    
 
-                                    }
-                                  }
-                           }
-                    },"401":{
+                                }
+                              }
+                       }
+                    },
+                    "401":{
                         "description":"não autorizado.",
                         "content":{
                             "application/json":{
@@ -1441,7 +1670,7 @@
                             "type":"string"
                         },
                         "precoUnitario":{
-                            "type":"string"
+                            "type":"integer"
                         },
                         "imagem":{
                             "type":"string"
@@ -1458,6 +1687,19 @@
                                     }
                                 }
                             }
+                        },
+                        "createdAt":{
+                            "type":"string"
+                        }
+                    }
+                }
+            },
+            "categoria":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "_id":{
+                            "type":"string"
                         },
                         "createdAt":{
                             "type":"string"
