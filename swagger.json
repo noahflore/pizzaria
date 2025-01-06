@@ -1361,7 +1361,7 @@
                         "application/json":{
                             "schema":{
                                 "type":"object",
-                                "$ref":"#/components/schemas/categoria"
+                                "$ref":"#/components/schemas/categoria_pizza"
                                 }
                           }
                     },
@@ -1480,7 +1480,7 @@
                         "application/json":{
                             "schema":{
                                 "type":"object",
-                                "$ref":"#/components/schemas/categoria"
+                                "$ref":"#/components/schemas/categoria_pizza"
                                 }
                           }
                     },
@@ -1496,6 +1496,530 @@
                                       "items":{
                                          "type":"object",
                                          "$ref":"#/components/schemas/pizza"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/categoria/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"procura todas as categorias.",
+                "description":"procura todas as categorias em um banco de dados e retorna.",
+                "tags":["categoria"],
+                 "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"ok.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/categoria"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/categoria/findById/{id}":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"procura uma categoria por ID.",
+                "description":"procura uma categoria por ID dentro do banco de dados e retorna.",
+                "tags":["categoria"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"categoria encontrado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/categoria"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/categoria/create":{
+            "post":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"criar uma nova categoria.",
+                "description":"criar uma nova categoria e salva no banco de dados.",
+                "tags":["categoria"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/categoria"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"categoria criada com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/categoria"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/categoria/update/{id}":{
+            "put":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"atualiza uma categoria.",
+                "description":"atualiza uma categoria válida dentro do banco de dados e retorna.",
+                "tags":["categoria"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/categoria"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "200":{
+                        "description":"categoria atualizada com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/categoria"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/categoria/delete/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"deleta uma categoria.",
+                "description":"deleta uma categoria válida pelo ID dentro de um banco de dados.",
+                "tags":["categoria"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"categoria deletada com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/categoria"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
                                         }
                                     
 
@@ -1694,11 +2218,27 @@
                     }
                 }
             },
+            "categoria_pizza":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "_id":{
+                            "type":"string"
+                        },
+                        "createdAt":{
+                            "type":"string"
+                        }
+                    }
+                }
+            },
             "categoria":{
                 "type":"array",
                 "items":{
                     "properties":{
                         "_id":{
+                            "type":"string"
+                        },
+                        "nome":{
                             "type":"string"
                         },
                         "createdAt":{
