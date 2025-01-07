@@ -2080,6 +2080,536 @@
                     }
                 }
             }
+        },
+        "/pedido/findAll":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"procura todos os pedidos.",
+                "description":"procura todos os pedidos dentro do banco de dados e retorna.",
+                "tags":["pedido"],
+                 "parameters":[
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"limit"
+                    },
+                    {
+                        "in":"query",
+                        "schema":{
+                            "type":"integer"
+                        },
+                        "name":"offset"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"ok.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pedido"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pedido/findById/{id}":{
+            "get":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"procura um pedido.",
+                "description":"procura um pedido pelo ID dentro do banco de dados e retorna.",
+                "tags":["pedido"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"pedido encontrado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pedido"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pedido/create":{
+            "post":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"crar um novo pedido.",
+                "description":"criar um novo pedido e salva no banco de dados e retorna.",
+                "tags":["pedido"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/pedido"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "201":{
+                        "description":"pedido criado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pedido"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pedido/updateStatus/{id}":{
+            "patch":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"atualiza o status do pedido.",
+                "description":"atualiza a propriedade concluido do pedido válido e retornar.",
+                "tags":["pedido"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"pedido atualizado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pedido"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
+        "/pedido/delete/{id}":{
+            "delete":{
+                "security":[
+                    {
+                        "bearerAuth":[]
+                    }
+                ],
+                "summary":"deleta um pedido.",
+                "description":"deleta um pedido válido pelo ID dentro de um banco de dados.",
+                "tags":["pedido"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"pedido deletado com sucesso.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                      "items":{
+                                         "type":"object",
+                                         "$ref":"#/components/schemas/pedido"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "404":{
+                        "description":"não foi encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                     "500":{
+                        "description":"erro de servidor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
         }
     },
     "components":{
@@ -2243,6 +2773,41 @@
                         },
                         "createdAt":{
                             "type":"string"
+                        }
+                    }
+                }
+            },
+            "pedido":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "pizzas":{
+                            "type":"array",
+                            "items":{
+                                "properties":{
+                                    "_id":{
+                                        "type":"string"
+                                    },
+                                    "quantidade":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        },
+                        "createdAt":{
+                            "type":"string"
+                        },   
+                        "precoTotal":{
+                            "type":"integer"
+                        },
+                        "frete":{
+                            "type":"integer"
+                        },
+                        "userId":{
+                            "type":"string"
+                        },
+                        "concluido":{
+                            "type":"boolean"
                         }
                     }
                 }
