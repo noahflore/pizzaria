@@ -859,6 +859,105 @@
                 }
             }
         },
+        "/usuario/login":{
+            "post":{
+                "summary":"faz login.",
+                "description":"faz login de usuário válido no banco de dados e o token é disponível. ",
+                "tags":["usuario"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "$ref":"#/components/schemas/login"
+                                }
+                          }
+                    },
+                    "required":true
+                },
+                "responses":{
+                    "200":{
+                        "description":"usuário logado com sucesso.",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                      "type":"object",
+                                      "$ref":"#/components/schemas/usuario"
+                                    }
+                                  }
+                           }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
+                        "description":"não autorizado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "404":{
+                        "description":"não encontrado.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "500":{
+                        "description":"erro de servidor.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    }
+                }
+            }
+        },
         "/pizza/findAll":{
             "get":{
                 "security":[
@@ -1496,6 +1595,23 @@
                                       "items":{
                                          "type":"object",
                                          "$ref":"#/components/schemas/pizza"
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
                                         }
                                     
 
@@ -2808,6 +2924,19 @@
                         },
                         "concluido":{
                             "type":"boolean"
+                        }
+                    }
+                }
+            },
+            "login":{
+                "type":"array",
+                "items":{
+                    "properties":{
+                        "email":{
+                            "type":"string"
+                        },
+                        "senha":{
+                            "type":"string"
                         }
                     }
                 }
