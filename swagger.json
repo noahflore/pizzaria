@@ -93,7 +93,7 @@
                        }
                     },
                      "500":{
-                        "description":"erro de servidor",
+                        "description":"erro de servidor.",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -148,7 +148,8 @@
                                     }
                                   }
                            }
-                    },"400":{
+                    },
+                    "400":{
                         "description":"mal requisição.",
                         "content":{
                             "application/json":{
@@ -200,7 +201,7 @@
                        }
                     },
                      "500":{
-                        "description":"erro de servidor",
+                        "description":"erro de servidor.",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -246,6 +247,23 @@
                                     }
                                   }
                            }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
                     },
                     "500":{
                         "description":"erro de servidor",
@@ -309,6 +327,23 @@
                                     }
                                   }
                            }
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
                     },
                     "401":{
                         "description":"não autorizado.",
@@ -454,7 +489,7 @@
                 }
             }
         },
-        "/usuario/addAdress/{id}":{
+        "/usuario/addAddress/{id}":{
             "post":{
                 "security":[
                     {
@@ -501,7 +536,25 @@
                                     }
                                   }
                            }
-                    },"401":{
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
                         "description":"não autorizado.",
                         "content":{
                             "application/json":{
@@ -519,7 +572,7 @@
                        }
                     },
                      "404":{
-                        "description":"mal requisição.",
+                        "description":"não encontrado.",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -2929,17 +2982,16 @@
                 }
             },
             "login":{
-                "type":"array",
-                "items":{
-                    "properties":{
-                        "email":{
-                            "type":"string"
-                        },
-                        "senha":{
-                            "type":"string"
-                        }
+                "type":"object",
+                "properties":{
+                   "email":{
+                     "type":"string"
+                    },
+                   "senha":{
+                     "type":"string"
                     }
-                }
+                 }
+                
             }
         }
     }
