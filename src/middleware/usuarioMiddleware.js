@@ -24,14 +24,14 @@ module.exports= async (req,res,next)=>{
     jwt.verify(token,process.env.SECRETKEY,async (err,decoded)=>{
         if(err){
             console.log(`erro verify: ${err}`)
-            return res.status(500).send({message:"o token invalido."})
+            return res.status(401).send({message:"o token invalido."})
         }
         //se de erro aqui verifica se o id foi pego do req ou decoded
         const user= await findByIdServiceUsuario(decoded.user._id)
 
         if(!user || !user.id){
             console.log(`erro user: ${user}`)
-            return res.status(500).send({message:"o token invalido."})
+            return res.status(401).send({message:"o token invalido."})
         }
 
         req.userId= decoded.user._id

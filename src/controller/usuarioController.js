@@ -170,9 +170,9 @@ const usuarioLogin= async (req,res)=>{//aqui utilizei outro tipo de verificaçã
             console.log(`erro de login: ${user}`)
 			return res.status(400).send({message:"erro no login ou senha: verifica se ambos estão no formato string e foi digitado corretamente."})
 		}
-        ///existe um erro aqui
+        
 		if(!await bcrypt.compare(senha,user.senha)){
-            console.log(`erro de login: ${typeof(user.senha)} | ${typeof(senha)}`)
+            console.log(`erro de login: senha do sistema ${user.senha} ${typeof(user.senha)} | ${typeof(senha)}`)
 			return res.status(400).send({message:"erro no login ou senha: verifica se ambos estão no formato string e foi digitado corretamente."})
 		}
 
