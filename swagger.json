@@ -608,7 +608,7 @@
                 }
             }
         },
-        "/usuario/removeAdress/":{
+        "/usuario/removeAddress/":{
             "delete":{
                 "security":[
                     {
@@ -624,7 +624,7 @@
                             "schema":{
                                 "type":"object",
                                 "properties":{
-                                    "id":{
+                                    "_id":{
                                         "type":"string"
                                     },
                                     "addressId":{
@@ -1053,7 +1053,8 @@
                                     }
                                   }
                            }
-                    },"401":{
+                    },
+                    "401":{
                         "description":"não autorizado.",
                         "content":{
                             "application/json":{
