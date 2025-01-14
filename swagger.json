@@ -1418,6 +1418,16 @@
                 "summary":"deleta uma pizza.",
                 "description":"deleta uma pizza dentro do banco de dados.",
                 "tags":["pizza"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "name":"id",
+                        "required":true
+                    }
+                ],
                 "responses":{
                     "200":{
                         "description":"deletado com sucesso.",
@@ -1435,7 +1445,25 @@
                                     }
                                   }
                            }
-                    },"401":{
+                    },
+                    "400":{
+                        "description":"mal requisição.",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                      "properties":{
+                                         "message":{
+                                             "type":"string"
+                                         }
+                                        }
+                                    
+
+                                }
+                              }
+                       }
+                    },
+                    "401":{
                         "description":"não autorizado.",
                         "content":{
                             "application/json":{
@@ -2959,7 +2987,7 @@
                                         "type":"string"
                                     },
                                     "quantidade":{
-                                        "type":"string"
+                                        "type":"integer"
                                     }
                                 }
                             }
