@@ -1,5 +1,6 @@
 const mongoose= require("mongoose")
 
+//montando um Schema típico para mongoDB utilizando o mongoose LIB
 const pedidoSchema= new mongoose.Schema({
     pizzas:[
         {
@@ -14,6 +15,7 @@ const pedidoSchema= new mongoose.Schema({
     concluido:{type:Boolean,required:true,default:false}
 })
 
+//usando o Schema para criar um modelo mongoDB
 const pedidoNovo= mongoose.model("pedidos",pedidoSchema)
 
 module.exports= pedidoNovo

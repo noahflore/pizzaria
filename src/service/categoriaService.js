@@ -1,5 +1,6 @@
-const Categoria= require("../model/categoria")
+const Categoria= require("../model/categoria")//módulo do modelo da categoria
 
+//CRUD completo utilizando o mongoose
 const findCategoriaByIdService= (id)=>{
     return Categoria.findById(id)
 }

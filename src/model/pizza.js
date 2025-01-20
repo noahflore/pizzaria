@@ -1,5 +1,6 @@
 const mongoose= require("mongoose")
 
+//montando um Schema típico para mongoDB utilizando o mongoose LIB
 const pizzaScrema= new mongoose.Schema({
     nome: {type: String, unique:true,required:true},
     descricao: {type: String,required:true},
@@ -13,6 +14,7 @@ const pizzaScrema= new mongoose.Schema({
     ]
 })
 
+//usando o Schema para criar um modelo mongoDB
 const pizza = mongoose.model("pizzas",pizzaScrema)
 
 module.exports =  pizza

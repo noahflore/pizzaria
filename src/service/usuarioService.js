@@ -1,5 +1,6 @@
 const usuario= require("../model/usuario")
 
+//CRUD completo utilizando o mongoose
 const findAllServiceUsuario= (limit,offset)=>{
     return usuario.find().limit(limit).skip(offset)
 }
@@ -20,6 +21,11 @@ const deleteServiceUsuario= (id)=>{
     return usuario.findByIdAndDelete(id)
 }
 
+/*
+utiliza 'findOneAndUpdate' para muda um atributo de um objeto válido
+os dois serviço addAddressService, removeAddressService, addFavPizza
+Service e removeFavPizzaService altera 'endereços' e 'pizzas_fav'
+*/
 const addAddressService= (id,endereco)=>{
   return  usuario.findOneAndUpdate(
         {

@@ -1,6 +1,7 @@
 const mongoose=require("mongoose")
 const bcrypt= require("bcrypt")
 
+//montando um Schema típico para mongoDB utilizando o mongoose LIB
 const usuarioSchema=new mongoose.Schema({
     nome:{type:String,required:true},
     email:{type:String,unique:true,required:true},
@@ -26,6 +27,11 @@ const usuarioSchema=new mongoose.Schema({
     admin:{type:Boolean,require:true,default:false}
 })
 
+/* 
+o método 'pre' é um tipo de middleware e ele salva algo no usuarioSchema antes de criar
+no caso o bcrypt criar um hash para senha o qual foi fornecido pelo usuário durante o cada
+stro
+*/
 usuarioSchema.pre("save",async function (next){
     if(this.senha){
         this.senha= await bcrypt.hash(this.senha,10)
@@ -33,5 +39,7 @@ usuarioSchema.pre("save",async function (next){
     next()
 })
 
+//usando o Schema para criar um modelo mongoDB
 const novoUsuario=mongoose.model("usuarios",usuarioSchema)
+
 module.exports = novoUsuario

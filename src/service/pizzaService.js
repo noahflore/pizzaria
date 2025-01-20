@@ -1,5 +1,6 @@
 const pizza = require("../model/pizza")
 
+//CRUD completo utilizando o mongoose
 const findPizzaByIdService= (id) =>{
     return pizza.findById(id)
 }
@@ -20,6 +21,11 @@ const deletePizzaService= (id)=>{
     return pizza.findByIdAndDelete(id)
 }
 
+/*
+utiliza 'findOneAndUpdate' para muda um atributo de um objeto válido
+os dois serviço addCategoriaPizzaService e removeCategoriaPizzaService
+altera a categoria da pizza
+*/
 const addCategoriaPizzaService= (id,categoria)=>{
     return pizza.findOneAndUpdate(
         {

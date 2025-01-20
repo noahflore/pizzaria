@@ -1,5 +1,6 @@
 const pedido= require("../model/pedido")
 
+//CRUD completo utilizando o mongoose
 const findPedidoByIdService= (id)=>{
     return pedido.findById(id)
 }
