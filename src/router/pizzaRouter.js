@@ -1,9 +1,15 @@
-const router= require("express").Router()
-const pizzaController= require("../controller/pizzaController")
-const authMiddleware= require("../middleware/usuarioMiddleware")
+const router= require("express").Router()//importa router
+const pizzaController= require("../controller/pizzaController")//importa controller da pizza
+const authMiddleware= require("../middleware/usuarioMiddleware")//importa autenticação
+//importa validação
 const {validaPizza,validaIdParams,valida_IdBody}= require("../middleware/validacaoMiddleware")
+//importa paginação de resultado
 const paginacao= require("../middleware/paginacaoMiddleware")
 
+/*
+endpoints do CRUD completo, addCategory e removeCategory onde alguns usa uma var como paramento,
+todos utiliza validações antes de chama o controller
+*/
 router.get("/findById/:id",validaIdParams,authMiddleware,pizzaController.findByIdPizzaController)
 router.get("/findAll",paginacao,authMiddleware,pizzaController.findAllPizzasController)
 
